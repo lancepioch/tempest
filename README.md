@@ -2,6 +2,23 @@
 
 Project Management
 
+## TODO Features
+
+* [ ] CRUD Issues (archiveable)
+  * [ ] Fields: Title, Text, ?Parent, \[Customizable Attributes]
+  * [ ] Markdown
+  * [ ] Children Issues
+  * [ ] Issue Types
+  * [ ] Custom Issue Types
+* [ ] CRUD Sprints
+  * [ ] Fields: Name, Due, Frequency 
+* [ ] CRUD Boards (Kanban)
+  * [ ] Order/Organize Issues
+* [ ] CRUD Comments (for each issue)
+  * [ ] Markdown 
+* [ ] Jira Integration
+  * [ ] Doesn't break Jira
+
 ## Goals
 
 ### Play Nice with Others
