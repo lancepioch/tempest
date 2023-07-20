@@ -1,0 +1,20 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+
+    paths:
+        - app/
+
+    level: 8
+
+    ignoreErrors:
+        - '#Access to an undefined property Illuminate\\Database\\Eloquent\\[a-zA-Z0-9::a-zA-Z]#'
+
+    checkGenericClassInNonGenericObjectType: false
+    checkMissingIterableValueType: false
+
+#    excludePaths:
+#        - ./*/*/FileToBeExcluded.php
+#
+#
