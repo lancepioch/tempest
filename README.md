@@ -23,7 +23,7 @@ Project Management
 
 ### Play Nice with Others
 
-This project should be able to be ran side by side with Jira. 
+This project should be able to be run side by side with Jira. 
 
 ### Simplicity
 
