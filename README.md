@@ -15,7 +15,11 @@ Project Management
 * [ ] CRUD Boards (Kanban)
   * [ ] Order/Organize Issues
 * [ ] CRUD Comments (for each issue)
-  * [ ] Markdown 
+  * [ ] Markdown
+* [ ] User Roles (either per project or per team)
+  * [ ] Administrators manage projects
+  * [ ] Developers work on issues in projects
+  * [ ] Users create and read issues in projects
 * [ ] Jira Integration
   * [ ] Doesn't break Jira
 
@@ -44,6 +48,11 @@ We should provide easy visibility into project status and team performance.
 ### Access Control and Security
 
 Simple and secure, ensure that sensitive information is only accessible to the right people.
+
+With the above roles per project and per team, you can easily create user accounts for any type of real position.
+For example, stakeholders could be given read only access to what they need to focus on.
+Customers could be given read/write only access to their own issues.
+Creators/Contributors can be given read/write access to all issues in certain projects.
 
 ### API
 
