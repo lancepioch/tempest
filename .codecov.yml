@@ -1,0 +1,11 @@
+ignore:
+  - "app/Actions/Fortify"
+  - "app/Actions/Jetstream"
+  - "app/Console/Kernel.php"
+  - "app/Exceptions/Handler.php"
+  - "app/Http/Middleware/Authenticate.php"
+  - "app/Http/RedirectIfAuthenticated.php"
+  - "app/Http/TrustHosts.php"
+  - "app/Providers"
+  - "app/View/AppLayout.php"
+  - "app/View/GuestLayout.php"
