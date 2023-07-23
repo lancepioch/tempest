@@ -21,7 +21,12 @@ Project Management
   * [ ] Developers work on issues in projects
   * [ ] Users create and read issues in projects
 * [ ] Jira Integration
-  * [ ] Doesn't break Jira
+  * [ ] Readonly? To encourage use from our app
+  * [ ] Sync comments and issues
+* [ ] GitHub Integration
+  * [ ] Link issues and comments together (2 way sync)
+  * [ ] Minimum Permissions asked for
+  * [ ] 1-1 user to github account (people using multiple github accounts should use multiple of ours)
 
 ## Goals
 
