@@ -37,6 +37,9 @@ jobs:
       - name: Generate Application Key
         run: php artisan key:generate
 
+      - name: Laravel Pint
+        run:  ./vendor/bin/pint --test
+
       - name: PHPUnit
         run: ./vendor/bin/phpunit --coverage-clover coverage.xml
 
