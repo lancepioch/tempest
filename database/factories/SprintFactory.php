@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Sprint;
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class SprintFactory extends Factory

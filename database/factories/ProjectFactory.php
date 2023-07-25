@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Project;
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProjectFactory extends Factory

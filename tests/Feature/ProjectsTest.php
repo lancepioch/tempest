@@ -2,10 +2,10 @@
 
 namespace Tests\Unit;
 
+use App\Livewire\CreateProject;
 use App\Models\Project;
 use App\Models\Team;
 use App\Models\User;
-use App\Livewire\CreateProject;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use PHPUnit\Framework\TestCase;
@@ -13,6 +13,7 @@ use PHPUnit\Framework\TestCase;
 class ProjectsTest extends TestCase
 {
     use RefreshDatabase;
+
     public function test_it_can_save_a_project(): void
     {
         $this->markTestIncomplete();
@@ -36,7 +37,6 @@ class ProjectsTest extends TestCase
     public function test_projects_can_only_be_viewed_by_team_members(): void
     {
         $this->markTestIncomplete();
-
 
         // Create a team with a team leader
         $teamLeader = User::factory()->create();
