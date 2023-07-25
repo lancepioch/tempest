@@ -37,8 +37,8 @@ jobs:
       - name: Generate Application Key
         run: php artisan key:generate
 
-      - name: Tests
-        run: ./vendor/bin/pest --coverage-clover coverage.xml
+      - name: PHPUnit
+        run: ./vendor/bin/phpunit --coverage-clover coverage.xml
 
       - name: Upload Coverage Reports to Codecov
         uses: codecov/codecov-action@v3
