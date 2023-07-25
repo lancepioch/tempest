@@ -1,61 +1,72 @@
 <?php
 
+namespace Tests\Unit;
+
 use App\Models\Project;
 use App\Models\Team;
 use App\Models\User;
 use App\Livewire\CreateProject;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
-use function Pest\Laravel\assertDatabaseHas;
+use PHPUnit\Framework\TestCase;
 
-uses(RefreshDatabase::class);
+class ProjectsTest extends TestCase
+{
+    use RefreshDatabase;
+    public function test_it_can_save_a_project(): void
+    {
+        $this->markTestIncomplete();
 
-it('can save a project', function () {
-    $attributes = [
-        'title' => fake()->sentence,
-        'description' => fake()->paragraph,
-    ];
+        $attributes = [
+            'title' => fake()->sentence,
+            'description' => fake()->paragraph,
+        ];
 
-    $user = User::factory()->create();
+        $user = User::factory()->create();
 
-    Livewire::actingAs($user)
-        ->test(CreateProject::class)
-        ->set('title', $attributes['title'])
-        ->call('save')
-        ->assertOk();
+        Livewire::actingAs($user)
+            ->test(CreateProject::class)
+            ->set('title', $attributes['title'])
+            ->call('save')
+            ->assertOk();
 
-    assertDatabaseHas('projects', $attributes);
-})->todo();
+        assertDatabaseHas('projects', $attributes);
+    }
 
-it('can only be viewed by team members that are apart of the project', function () {
-    // Create a team with a team leader
-    $teamLeader = User::factory()->create();
-    $team = Team::factory()->create(['user_id' => $teamLeader->id]);
+    public function test_projects_can_only_be_viewed_by_team_members(): void
+    {
+        $this->markTestIncomplete();
 
-    // Add team members
-    $teamMember = User::factory()->create();
-    $team->users()->attach($teamMember);
 
-    // Create a project assigned to the team
-    $project = Project::factory()->create(['team_id' => $team->id]);
+        // Create a team with a team leader
+        $teamLeader = User::factory()->create();
+        $team = Team::factory()->create(['user_id' => $teamLeader->id]);
 
-    // Create another user who is not part of the team
-    $unauthorizedUser = User::factory()->create();
+        // Add team members
+        $teamMember = User::factory()->create();
+        $team->users()->attach($teamMember);
 
-    // Check if the unauthorized user can view the project
-    Livewire::actingAs($unauthorizedUser)
-        ->test(ViewProject::class, ['project' => $project])
-        ->assertForbidden();
+        // Create a project assigned to the team
+        $project = Project::factory()->create(['team_id' => $team->id]);
 
-    // Check if a team member can view the project
-    Livewire::actingAs($teamMember)
-        ->test(ViewProject::class, ['project' => $project])
-        ->assertSee($project->title)
-        ->assertOk();
+        // Create another user who is not part of the team
+        $unauthorizedUser = User::factory()->create();
 
-    // Check if the team leader can view the project
-    Livewire::actingAs($teamLeader)
-        ->test(ViewProject::class, ['project' => $project])
-        ->assertSee($project->title)
-        ->assertOk();
-})->todo();
+        // Check if the unauthorized user can view the project
+        Livewire::actingAs($unauthorizedUser)
+            ->test(ViewProject::class, ['project' => $project])
+            ->assertForbidden();
+
+        // Check if a team member can view the project
+        Livewire::actingAs($teamMember)
+            ->test(ViewProject::class, ['project' => $project])
+            ->assertSee($project->title)
+            ->assertOk();
+
+        // Check if the team leader can view the project
+        Livewire::actingAs($teamLeader)
+            ->test(ViewProject::class, ['project' => $project])
+            ->assertSee($project->title)
+            ->assertOk();
+    }
+}
