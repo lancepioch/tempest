@@ -37,9 +37,6 @@ jobs:
       - name: Generate Application Key
         run: php artisan key:generate
 
-      - name: Laravel Pint
-        run:  ./vendor/bin/pint --test
-
       - name: PHPUnit
         run: ./vendor/bin/phpunit --coverage-clover coverage.xml
 
@@ -47,3 +44,13 @@ jobs:
         uses: codecov/codecov-action@v3
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+  pint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: "laravel-pint"
+        uses: aglipanci/laravel-pint-action@2.0.0
+        with:
+          verboseMode: true
+          testMode: true
