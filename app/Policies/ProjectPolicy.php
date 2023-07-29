@@ -31,7 +31,7 @@ class ProjectPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->ownsTeam($user->currentTeam());
     }
 
     /**
@@ -39,7 +39,7 @@ class ProjectPolicy
      */
     public function update(User $user, Project $model): bool
     {
-        return true;
+        return $user->ownsTeam($user->currentTeam());
     }
 
     /**
@@ -47,7 +47,7 @@ class ProjectPolicy
      */
     public function delete(User $user, Project $model): bool
     {
-        return true;
+        return $user->ownsTeam($user->currentTeam());
     }
 
     /**
@@ -55,7 +55,7 @@ class ProjectPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -71,6 +71,6 @@ class ProjectPolicy
      */
     public function forceDelete(User $user, Project $model): bool
     {
-        return false;
+        return $user->ownsTeam($user->currentTeam());
     }
 }
