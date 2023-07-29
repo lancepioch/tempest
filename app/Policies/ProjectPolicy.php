@@ -15,15 +15,15 @@ class ProjectPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return false;
     }
 
     /**
      * Determine whether the project can view the model.
      */
-    public function view(User $user, Project $model): bool
+    public function view(User $user, Project $project): bool
     {
-        return true;
+        return $user->belongsToTeam($project->team);
     }
 
     /**

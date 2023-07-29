@@ -22,6 +22,8 @@ class ProjectFactory extends Factory
     public function definition(): array
     {
         return [
+            'title' => fake()->sentence,
+            'description' => fake()->text,
             'team_id' => \App\Models\Team::factory(),
         ];
     }

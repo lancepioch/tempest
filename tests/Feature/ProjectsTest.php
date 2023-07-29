@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Http\Livewire\CreateProject;
+use App\Http\Livewire\ViewProject;
 use App\Models\Project;
 use App\Models\Team;
 use App\Models\User;
@@ -43,8 +44,6 @@ class ProjectsTest extends TestCase
 
     public function test_projects_can_only_be_viewed_by_team_members(): void
     {
-        $this->markTestIncomplete();
-
         // Create a team with a team leader
         $teamLeader = User::factory()->create();
         $team = Team::factory()->create(['user_id' => $teamLeader->id]);
