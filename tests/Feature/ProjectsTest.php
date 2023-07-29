@@ -2,13 +2,13 @@
 
 namespace Tests\Unit;
 
-use App\Livewire\CreateProject;
+use App\Http\Livewire\CreateProject;
 use App\Models\Project;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 
 class ProjectsTest extends TestCase
 {
@@ -16,22 +16,29 @@ class ProjectsTest extends TestCase
 
     public function test_it_can_save_a_project(): void
     {
-        $this->markTestIncomplete();
-
         $attributes = [
             'title' => fake()->sentence,
             'description' => fake()->paragraph,
         ];
 
         $user = User::factory()->create();
+        $team = Team::factory()->create(['user_id' => $user->id]);
 
         Livewire::actingAs($user)
             ->test(CreateProject::class)
             ->set('title', $attributes['title'])
+            ->set('description', $attributes['description'])
             ->call('save')
             ->assertOk();
 
-        assertDatabaseHas('projects', $attributes);
+        $this->assertDatabaseHas('projects', $attributes);
+
+        Livewire::actingAs($user)
+            ->test(CreateProject::class)
+            ->set('title', '')
+            ->set('description', '')
+            ->call('save')
+            ->assertHasErrors(['title', 'description']);
     }
 
     public function test_projects_can_only_be_viewed_by_team_members(): void

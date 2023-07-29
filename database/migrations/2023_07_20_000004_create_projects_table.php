@@ -15,6 +15,9 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('team_id');
 
+            $table->string('title');
+            $table->text('description');
+
             $table->timestamps();
         });
     }

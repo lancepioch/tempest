@@ -11,7 +11,11 @@ class Project extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['team_id'];
+    protected $fillable = [
+        'team_id',
+        'title',
+        'description',
+    ];
 
     protected $searchableFields = ['*'];
 
