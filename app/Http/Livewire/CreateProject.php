@@ -9,6 +9,7 @@ use Livewire\Component;
 class CreateProject extends Component
 {
     public string $title = '';
+
     public string $description = '';
 
     protected $rules = [
