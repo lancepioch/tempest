@@ -11,7 +11,6 @@ class Sprint extends Model
 
     protected $fillable = ['project_id'];
 
-
     public function project()
     {
         return $this->belongsTo(Project::class);
